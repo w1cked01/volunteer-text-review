@@ -1,51 +1,32 @@
+import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code"
-import { button as buttonStyles } from "@nextui-org/theme";
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
 
-export default function Home() {
-	return (
-		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-			<div className="inline-block max-w-lg text-center justify-center">
-				<h1 className={title()}>Make&nbsp;</h1>
-				<h1 className={title({ color: "violet" })}>beautiful&nbsp;</h1>
-				<br />
-				<h1 className={title()}>
-					websites regardless of your design experience.
-				</h1>
-				<h2 className={subtitle({ class: "mt-4" })}>
-					Beautiful, fast and modern React UI library.
-				</h2>
-			</div>
+async function getUser() {
+  try {
+    const data = await fetch("http://api.sarika.hischoolkh.com/get_users");
+    const json = await data.json();
+    return json;
+  } catch (error) {
+    throw new Error("Somthing went wrong");
+  }
+}
 
-			<div className="flex gap-3">
-				<Link
-					isExternal
-					href={siteConfig.links.docs}
-					className={buttonStyles({ color: "primary", radius: "full", variant: "shadow" })}
-				>
-					Documentation
-				</Link>
-				<Link
-					isExternal
-					className={buttonStyles({ variant: "bordered", radius: "full" })}
-					href={siteConfig.links.github}
-				>
-					<GithubIcon size={20} />
-					GitHub
-				</Link>
-			</div>
+export default async function Home() {
+  const user = await getUser();
 
-			<div className="mt-8">
-				<Snippet hideSymbol hideCopyButton variant="flat">
-					<span>
-						Get started by editing <Code color="primary">app/page.tsx</Code>
-					</span>
-				</Snippet>
-			</div>
-		</section>
-	);
+  return (
+    <div className="space-y-2">
+      {user.user.map((user: any) => {
+        return (
+          <Card key={user[0]}>
+            <Link href={`/${user[0]}`}>
+              <CardBody>
+                <p>{user[1]}</p>
+              </CardBody>
+            </Link>
+          </Card>
+        );
+      })}
+    </div>
+  );
 }
