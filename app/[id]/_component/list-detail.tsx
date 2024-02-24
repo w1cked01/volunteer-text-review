@@ -14,12 +14,13 @@ const ListDetail = ({ userId }: { userId: string }) => {
 
     const { isPending, isError, data, isFetching, isLoading } = useQuery({
         queryKey: ["player-list", page], // Include the page in the queryKey
-        queryFn: () => fetch(`https://api.sarika.hischoolkh.com/get_texts_by_user/${userId}?start=${page}&limit=${size}`).then(res => res.json()),
+        queryFn: () => fetch(`/api?start=${page}&userId=${userId}&limit=${size}`).then(res => res.json()),
         placeholderData: keepPreviousData,
     });
 
     const handlePageChange = (page: number) => {
-        setPage(page * size);
+        if(page === 1) {setPage(1)}
+        else setPage((page-1) * size);
     }
 
     return (
@@ -49,7 +50,7 @@ const ListDetail = ({ userId }: { userId: string }) => {
                     })}
                 </div>
             )}
-            {data && <Pagination className='mt-10' total={data.count / 10} initialPage={1} onChange={handlePageChange} />}
+            {data && <Pagination className='mt-10' total={Math.ceil(data.count / 10)} initialPage={1} onChange={handlePageChange} />}
         </>
     )
 }
