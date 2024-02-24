@@ -50,7 +50,7 @@ const ListDetail = ({ userId }: { userId: string }) => {
                     })}
                 </div>
             )}
-            {data && <Pagination className='mt-10' total={Math.ceil(data.count / 10)} initialPage={1} onChange={handlePageChange} />}
+            {data && <Pagination isCompact showControls className='mt-10' total={Math.ceil(data.count / 10)} initialPage={1} onChange={handlePageChange} />}
         </>
     )
 }
