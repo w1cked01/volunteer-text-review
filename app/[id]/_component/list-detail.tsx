@@ -28,7 +28,7 @@ const ListDetail = ({ userId }: { userId: string }) => {
                 <div className='space-y-2'>
                     {
                         Array.from({ length: 10 }).map((_, i) => (
-                            <Skeleton className="rounded-lg">
+                            <Skeleton key={i} className="rounded-lg">
                                 <div className="h-10 w-full rounded-lg bg-default-300"></div>
                             </Skeleton>
                         ))
