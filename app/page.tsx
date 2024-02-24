@@ -3,7 +3,7 @@ import { Link } from "@nextui-org/link";
 
 async function getUser() {
   try {
-    const data = await fetch("http://api.sarika.hischoolkh.com/get_users");
+    const data = await fetch("http://api.sarika.hischoolkh.com/get_users", { next: { revalidate: 1 } });
     const json = await data.json();
     return json;
   } catch (error) {
