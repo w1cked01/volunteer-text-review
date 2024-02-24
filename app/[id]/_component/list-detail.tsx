@@ -14,7 +14,7 @@ const ListDetail = ({ userId }: { userId: string }) => {
 
     const { isPending, isError, data, isFetching, isLoading } = useQuery({
         queryKey: ["player-list", page], // Include the page in the queryKey
-        queryFn: () => fetch(`http://api.sarika.hischoolkh.com/get_texts_by_user/${userId}?start=${page}&limit=${size}`).then(res => res.json()),
+        queryFn: () => fetch(`https://api.sarika.hischoolkh.com/get_texts_by_user/${userId}?start=${page}&limit=${size}`).then(res => res.json()),
         placeholderData: keepPreviousData,
     });
 
