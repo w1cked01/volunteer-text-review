@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
+import { Card, CardBody } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
 
 async function getUser() {
@@ -15,18 +15,20 @@ export default async function Home() {
   const user = await getUser();
 
   return (
-    <div className="space-y-2">
-      {user.user.map((user: any) => {
-        return (
-          <Card key={user[0]}>
-            <Link href={`/${user[0]}`}>
-              <CardBody>
-                <p>{user[1]}</p>
-              </CardBody>
-            </Link>
-          </Card>
-        );
-      })}
+    <div className="container p-10">
+      <div className="space-y-2">
+        {user.user.map((user: any) => {
+          return (
+            <Card key={user[0]}>
+              <Link href={`/${user[0]}`}>
+                <CardBody>
+                  <p>{user[1]}</p>
+                </CardBody>
+              </Link>
+            </Card>
+          );
+        })}
+      </div>
     </div>
   );
 }

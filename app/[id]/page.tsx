@@ -1,6 +1,5 @@
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 
-
 const getUserDetail = async (userId: string) => {
   try {
     const user = await fetch(
@@ -16,16 +15,18 @@ const UserDetailPage = async ({ params }: { params: { id: string } }) => {
   const userDetail = await getUserDetail(params.id);
 
   return (
-    <div className="space-y-2">
-      {userDetail.data.map((detail: any) => {
-        return (
-          <Card key={detail[0]}>
+    <div className="container p-10">
+      <div className="space-y-2">
+        {userDetail.data.map((detail: any) => {
+          return (
+            <Card key={detail[0]}>
               <CardBody>
                 <p>{detail[1]}</p>
               </CardBody>
-          </Card>
-        );
-      })}
+            </Card>
+          );
+        })}
+      </div>
     </div>
   );
 };
