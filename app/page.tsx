@@ -1,9 +1,11 @@
 import { Card, CardBody } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
-
+import Image from "next/image";
 async function getUser() {
   try {
-    const data = await fetch("http://api.sarika.hischoolkh.com/get_users", { next: { revalidate: 1 } });
+    const data = await fetch("http://api.sarika.hischoolkh.com/get_users", {
+      next: { revalidate: 1 },
+    });
     const json = await data.json();
     return json;
   } catch (error) {
@@ -16,6 +18,11 @@ export default async function Home() {
 
   return (
     <div className="container p-10">
+      <div className="w-full mb-10">
+        <h1 className="text-xl font-bold uppercase">
+          click on your name to review the text corpus that assigned to you
+        </h1>
+      </div>
       <div className="space-y-2">
         {user.user.map((user: any) => {
           return (
