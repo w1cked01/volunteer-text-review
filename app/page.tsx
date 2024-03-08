@@ -1,3 +1,4 @@
+import UserList from "@/components/list-user";
 import { Card, CardBody } from "@nextui-org/card";
 import { Link } from "@nextui-org/link";
 
@@ -17,7 +18,7 @@ export default async function Home() {
   return (
     <div className="container p-10">
       <div className="space-y-2">
-        {user.user.map((user: any) => {
+        {/* {user.user.map((user: any) => {
           return (
             <Card key={user[0]}>
               <Link href={`/${user[0]}`}>
@@ -27,7 +28,8 @@ export default async function Home() {
               </Link>
             </Card>
           );
-        })}
+        })} */}
+        <UserList/>
       </div>
     </div>
   );
