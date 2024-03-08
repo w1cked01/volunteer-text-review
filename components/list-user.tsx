@@ -5,6 +5,7 @@ import { Pagination, PaginationItem, PaginationCursor } from "@nextui-org/pagina
 import { Skeleton } from "@nextui-org/skeleton";
 import React, { useState } from 'react'
 import { Card, CardBody } from '@nextui-org/card';
+import Link from 'next/link';
 
 const UserList = () => {
 
@@ -41,10 +42,19 @@ const UserList = () => {
                 <div className='space-y-2'>
                     {data.data.map((detail: any) => {
                         return (
+            //                 <Card key={user[0]}>
+            //   <Link href={`/${user[0]}`}>
+            //     <CardBody>
+            //       <p>{user[1]}</p>
+            //     </CardBody>
+            //   </Link>
+            // </Card>
                             <Card key={detail[0]}>
-                                <CardBody>
-                                    <p>{detail[1]}</p>
-                                </CardBody>
+                                <Link href={`/${detail[0]}`}>
+                                    <CardBody>
+                                        <p>{detail[1]}</p>
+                                    </CardBody>
+                                </Link>
                             </Card>
                         );
                     })}
