@@ -1,8 +1,5 @@
 // Import necessary components and modules
 import UserList from "@/components/list-user";
-import { Card, CardBody } from "@nextui-org/card";
-import { Link } from "@nextui-org/link";
-import Image from "next/image";
 
 // Function to fetch user data from the API
 async function getUser() {

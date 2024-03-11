@@ -3,8 +3,6 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import {
   Pagination,
-  PaginationItem,
-  PaginationCursor,
 } from "@nextui-org/pagination";
 import { Skeleton } from "@nextui-org/skeleton";
 import React, { useState } from "react";
