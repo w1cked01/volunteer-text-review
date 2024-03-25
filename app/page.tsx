@@ -22,8 +22,11 @@ export default async function Home() {
 
   // Return the main page content
   return (
+
+    
     // Main page container
     <div className="container p-10 items-center">
+      
       {/* Title and Logo */}
       <div className="flex items-center space-x-4 mb-4">
         <Image
